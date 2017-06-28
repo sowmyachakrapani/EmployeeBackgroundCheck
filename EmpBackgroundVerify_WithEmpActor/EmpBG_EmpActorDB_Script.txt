@@ -1,0 +1,365 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblEmployees]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblEmployees](
+	[EmpId] [int] IDENTITY(1,1) NOT NULL,
+	[EmpName] [varchar](50) NULL,
+	[Address] [varchar](max) NULL,
+	[MobileNo] [varchar](50) NULL,
+	[EmailId] [varchar](50) NULL,
+	[Photo] [varchar](50) NULL,
+	[DOB] [varchar](50) NULL,
+	[Qualification] [varchar](50) NULL,
+	[AadharCardNo] [varchar](50) NULL,
+	[Date] [varchar](50) NULL,
+	[Password] [varchar](50) NULL,
+ CONSTRAINT [PK_tblEmployees] PRIMARY KEY CLUSTERED 
+(
+	[EmpId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblAdmin]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblAdmin](
+	[AdminId] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NULL,
+ CONSTRAINT [PK_tblAdmin] PRIMARY KEY CLUSTERED 
+(
+	[AdminId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblCities]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblCities](
+	[CityId] [int] IDENTITY(1,1) NOT NULL,
+	[CityName] [varchar](50) NULL,
+ CONSTRAINT [PK_tblCities] PRIMARY KEY CLUSTERED 
+(
+	[CityId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblEmployeeResumes]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblEmployeeResumes](
+	[ResumeId] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyId] [varchar](50) NULL,
+	[EmpId] [int] NULL,
+	[Resume] [varchar](max) NULL,
+	[Date] [varchar](50) NULL,
+ CONSTRAINT [PK_tblEmployeeResumes] PRIMARY KEY CLUSTERED 
+(
+	[ResumeId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblEmployeeDetails]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblEmployeeDetails](
+	[DetailId] [int] IDENTITY(1,1) NOT NULL,
+	[EmpId] [int] NULL,
+	[DeptId] [int] NULL,
+	[DesId] [int] NULL,
+	[DOJ] [datetime] NULL,
+	[Status] [varchar](50) NULL,
+	[QuitDate] [varchar](50) NULL,
+	[QuitReason] [varchar](max) NULL,
+	[Rating] [int] NULL,
+	[CompanyId] [varchar](50) NULL,
+	[Date] [datetime] NULL,
+ CONSTRAINT [PK_tblEmployeeDetails] PRIMARY KEY CLUSTERED 
+(
+	[DetailId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblRequest]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblRequest](
+	[RequestId] [int] IDENTITY(1,1) NOT NULL,
+	[RequestFrom] [varchar](50) NULL,
+	[RequestTo] [varchar](50) NULL,
+	[EmpId] [int] NULL,
+	[Reply] [varchar](max) NULL,
+	[Date] [datetime] NULL,
+ CONSTRAINT [PK_tblRequest] PRIMARY KEY CLUSTERED 
+(
+	[RequestId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblVisitors]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblVisitors](
+	[VisitorId] [int] IDENTITY(1,1) NOT NULL,
+	[ViewerCompanyId] [varchar](50) NULL,
+	[ViewedCompanyId] [varchar](50) NULL,
+	[EmpId] [int] NULL,
+	[Date] [datetime] NULL,
+ CONSTRAINT [PK_tblVisitors] PRIMARY KEY CLUSTERED 
+(
+	[VisitorId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblSalaries]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblSalaries](
+	[SalaryId] [int] IDENTITY(1,1) NOT NULL,
+	[EmpId] [int] NULL,
+	[CTC] [int] NULL,
+	[HikeDate] [varchar](50) NULL,
+	[Rating] [int] NULL,
+	[CompanyId] [varchar](50) NULL,
+	[Date] [datetime] NULL,
+	[Status] [varchar](50) NULL,
+ CONSTRAINT [PK_tblSalaries] PRIMARY KEY CLUSTERED 
+(
+	[SalaryId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblDesignations]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblDesignations](
+	[DesId] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyId] [varchar](50) NULL,
+	[Designation] [varchar](50) NULL,
+ CONSTRAINT [PK_tblDesignations] PRIMARY KEY CLUSTERED 
+(
+	[DesId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblDepartments]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblDepartments](
+	[DeptId] [int] IDENTITY(1,1) NOT NULL,
+	[DeptName] [varchar](50) NULL,
+	[CompanyId] [varchar](50) NULL,
+ CONSTRAINT [PK_tblDepartments] PRIMARY KEY CLUSTERED 
+(
+	[DeptId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblQueries]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblQueries](
+	[QueryId] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyId] [varchar](50) NULL,
+	[Query] [varchar](max) NULL,
+	[PostedDate] [datetime] NULL,
+	[Reply] [varchar](max) NULL,
+	[ReplyDate] [datetime] NULL,
+ CONSTRAINT [PK_tblQueries] PRIMARY KEY CLUSTERED 
+(
+	[QueryId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tblCompanies]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[tblCompanies](
+	[CompanyId] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NULL,
+	[CompanyName] [varchar](max) NULL,
+	[Address] [varchar](max) NULL,
+	[MobileNo] [varchar](50) NULL,
+	[CityId] [int] NULL,
+	[EmailId] [varchar](50) NULL,
+	[WebsiteAddress] [varchar](max) NULL,
+	[RegisteredDate] [varchar](50) NULL,
+	[Status] [varchar](50) NULL,
+	[Certificate] [varchar](50) NULL,
+	[Date] [varchar](50) NULL,
+ CONSTRAINT [PK_tblCompanies] PRIMARY KEY CLUSTERED 
+(
+	[CompanyId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblEmployeeResumes_tblCompanies]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblEmployeeResumes]'))
+ALTER TABLE [dbo].[tblEmployeeResumes]  WITH CHECK ADD  CONSTRAINT [FK_tblEmployeeResumes_tblCompanies] FOREIGN KEY([CompanyId])
+REFERENCES [dbo].[tblCompanies] ([CompanyId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblEmployeeResumes] CHECK CONSTRAINT [FK_tblEmployeeResumes_tblCompanies]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblEmployeeResumes_tblEmployees]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblEmployeeResumes]'))
+ALTER TABLE [dbo].[tblEmployeeResumes]  WITH CHECK ADD  CONSTRAINT [FK_tblEmployeeResumes_tblEmployees] FOREIGN KEY([EmpId])
+REFERENCES [dbo].[tblEmployees] ([EmpId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblEmployeeResumes] CHECK CONSTRAINT [FK_tblEmployeeResumes_tblEmployees]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblEmployeeDetails_tblDepartments]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblEmployeeDetails]'))
+ALTER TABLE [dbo].[tblEmployeeDetails]  WITH CHECK ADD  CONSTRAINT [FK_tblEmployeeDetails_tblDepartments] FOREIGN KEY([DeptId])
+REFERENCES [dbo].[tblDepartments] ([DeptId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblEmployeeDetails] CHECK CONSTRAINT [FK_tblEmployeeDetails_tblDepartments]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblEmployeeDetails_tblDesignations]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblEmployeeDetails]'))
+ALTER TABLE [dbo].[tblEmployeeDetails]  WITH CHECK ADD  CONSTRAINT [FK_tblEmployeeDetails_tblDesignations] FOREIGN KEY([DesId])
+REFERENCES [dbo].[tblDesignations] ([DesId])
+GO
+ALTER TABLE [dbo].[tblEmployeeDetails] CHECK CONSTRAINT [FK_tblEmployeeDetails_tblDesignations]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblEmployeeDetails_tblEmployees]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblEmployeeDetails]'))
+ALTER TABLE [dbo].[tblEmployeeDetails]  WITH CHECK ADD  CONSTRAINT [FK_tblEmployeeDetails_tblEmployees] FOREIGN KEY([EmpId])
+REFERENCES [dbo].[tblEmployees] ([EmpId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblEmployeeDetails] CHECK CONSTRAINT [FK_tblEmployeeDetails_tblEmployees]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblRequest_tblCompanies]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblRequest]'))
+ALTER TABLE [dbo].[tblRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblRequest_tblCompanies] FOREIGN KEY([RequestFrom])
+REFERENCES [dbo].[tblCompanies] ([CompanyId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblRequest] CHECK CONSTRAINT [FK_tblRequest_tblCompanies]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblRequest_tblCompanies1]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblRequest]'))
+ALTER TABLE [dbo].[tblRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblRequest_tblCompanies1] FOREIGN KEY([RequestTo])
+REFERENCES [dbo].[tblCompanies] ([CompanyId])
+GO
+ALTER TABLE [dbo].[tblRequest] CHECK CONSTRAINT [FK_tblRequest_tblCompanies1]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblRequest_tblEmployees]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblRequest]'))
+ALTER TABLE [dbo].[tblRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblRequest_tblEmployees] FOREIGN KEY([EmpId])
+REFERENCES [dbo].[tblEmployees] ([EmpId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblRequest] CHECK CONSTRAINT [FK_tblRequest_tblEmployees]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblVisitors_tblCompanies]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblVisitors]'))
+ALTER TABLE [dbo].[tblVisitors]  WITH CHECK ADD  CONSTRAINT [FK_tblVisitors_tblCompanies] FOREIGN KEY([ViewerCompanyId])
+REFERENCES [dbo].[tblCompanies] ([CompanyId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblVisitors] CHECK CONSTRAINT [FK_tblVisitors_tblCompanies]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblVisitors_tblEmployees]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblVisitors]'))
+ALTER TABLE [dbo].[tblVisitors]  WITH CHECK ADD  CONSTRAINT [FK_tblVisitors_tblEmployees] FOREIGN KEY([EmpId])
+REFERENCES [dbo].[tblEmployees] ([EmpId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblVisitors] CHECK CONSTRAINT [FK_tblVisitors_tblEmployees]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblSalaries_tblCompanies]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblSalaries]'))
+ALTER TABLE [dbo].[tblSalaries]  WITH CHECK ADD  CONSTRAINT [FK_tblSalaries_tblCompanies] FOREIGN KEY([CompanyId])
+REFERENCES [dbo].[tblCompanies] ([CompanyId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblSalaries] CHECK CONSTRAINT [FK_tblSalaries_tblCompanies]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblSalaries_tblEmployees]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblSalaries]'))
+ALTER TABLE [dbo].[tblSalaries]  WITH CHECK ADD  CONSTRAINT [FK_tblSalaries_tblEmployees] FOREIGN KEY([EmpId])
+REFERENCES [dbo].[tblEmployees] ([EmpId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblSalaries] CHECK CONSTRAINT [FK_tblSalaries_tblEmployees]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblDesignations_tblCompanies]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblDesignations]'))
+ALTER TABLE [dbo].[tblDesignations]  WITH CHECK ADD  CONSTRAINT [FK_tblDesignations_tblCompanies] FOREIGN KEY([CompanyId])
+REFERENCES [dbo].[tblCompanies] ([CompanyId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblDesignations] CHECK CONSTRAINT [FK_tblDesignations_tblCompanies]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblDepartments_tblCompanies]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblDepartments]'))
+ALTER TABLE [dbo].[tblDepartments]  WITH CHECK ADD  CONSTRAINT [FK_tblDepartments_tblCompanies] FOREIGN KEY([CompanyId])
+REFERENCES [dbo].[tblCompanies] ([CompanyId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblDepartments] CHECK CONSTRAINT [FK_tblDepartments_tblCompanies]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblQueries_tblCompanies]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblQueries]'))
+ALTER TABLE [dbo].[tblQueries]  WITH CHECK ADD  CONSTRAINT [FK_tblQueries_tblCompanies] FOREIGN KEY([CompanyId])
+REFERENCES [dbo].[tblCompanies] ([CompanyId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblQueries] CHECK CONSTRAINT [FK_tblQueries_tblCompanies]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tblCompanies_tblCities]') AND parent_object_id = OBJECT_ID(N'[dbo].[tblCompanies]'))
+ALTER TABLE [dbo].[tblCompanies]  WITH CHECK ADD  CONSTRAINT [FK_tblCompanies_tblCities] FOREIGN KEY([CityId])
+REFERENCES [dbo].[tblCities] ([CityId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tblCompanies] CHECK CONSTRAINT [FK_tblCompanies_tblCities]

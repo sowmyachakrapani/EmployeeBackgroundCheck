@@ -1,0 +1,89 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HomeMaster.master.cs" Inherits="EmpBackgroundVerify.Visitor.HomeMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Internationalbiz</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/coin-slider.css" />
+<script type="text/javascript" src="../js/cufon-yui.js"></script>
+<script type="text/javascript" src="../js/cufon-titillium-600.js"></script>
+<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script type="text/javascript" src="../js/coin-slider.min.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo">
+        <h1><a href="index.html">Employee<b><font color="red" size=7><i>BG</i></b></font><span>Verification</span> <small>Company Slogan Here</small></a></h1>
+      </div>
+      <div class="searchform">
+        </div>
+      </div>
+      <div class="clr"></div>
+      <div class="slider">
+        <div id="coin-slider"> <a href="#"><img src="../images/slide1.jpg" width="940" height="310" alt="" /> </a> <a href="#"><img src="../images/slide2.jpg" width="940" height="310" alt="" /> </a> <a href="#"><img src="../images/slide3.jpg" width="940" height="310" alt="" /> </a> </div>
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+      <div class="menu_nav">
+        <ul>
+          <li class="active"><a href="HomePage.aspx"><span>Home Page</span></a></li>
+          <li><a href="RegistrationForm.aspx"><span>Register</span></a></li>
+          <li><a href="LoginPage.aspx"><span>Login</span></a></li>
+          <li><a href="Services.aspx"><span>Services</span></a></li>
+          <li><a href="AboutUs.aspx"><span>About Us</span></a></li>
+          <li><a href="ContactUs.aspx"><span>Contact Us</span></a></li>
+        </ul>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+      
+        
+          <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+          </asp:ContentPlaceHolder>
+      
+        
+      </div>
+      <div class="sidebar">
+        <div class="gadget">
+          <h2 class="star">&nbsp;Menu</h2>
+          <div class="clr"></div>
+
+          <ul class="sb_menu">
+            <li><a href="HomePage.aspx">Home</a></li>
+            <li><a href="RegistrationForm.aspx">Registration</a></li>
+            <li><a href="LoginPage.aspx">Login</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="AboutUs.aspx">About Us</a></li>
+            <li><a href="ContactUs.aspx">Contact Us</a></li>
+          </ul>
+
+        </div>
+        
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+        </form>
+  
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="lf">&copy; Copyright <a href="#">MyWebSite</a>.</p>
+      <p class="rf">Design by Dream <a href="http://www.dreamtemplate.com/">Web Templates</a></p>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
+   
+</body>
+</html>
